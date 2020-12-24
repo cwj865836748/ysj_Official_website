@@ -1,0 +1,4 @@
+<!--pages/index/index.wxml-->
+<navbar back="{{false}}" title="" navbarType="2" headColor="{{headColor}}" titleColor="{{titleColor}}">
+ 
+</navbar>
