@@ -1,0 +1,5 @@
+/* pages/schemeLibrary/schemeLibrary.wxss */
+@import "/components/schemeLibrary/schemeLibrary.wxss";
+.schemeList {
+  padding: 32rpx 30rpx;
+}

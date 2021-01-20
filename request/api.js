@@ -53,7 +53,7 @@
     },
     sendFileList(data){
       return request({
-        url:'/api/engineering/sendFileList',
+        url:'/api/common/sendFileList',
         method:'POST',
         data
       })
@@ -83,11 +83,6 @@
     staffStyleList(){
       return request({
         url:'/api/secondPage/staffStyleList'
-      })
-    },
-    companyCultureList(){
-      return request({
-        url:'/api/secondPage/companyCultureList'
       })
     },
     milestoneList(){

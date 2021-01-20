@@ -2,13 +2,12 @@ import {
   showToast
 } from '../utils/wx'
 // 后台url
-const baseUrl = 'http://119.29.201.207:8088';
+const baseUrl = 'https://pmaly.ysjdl.cn';
 // 同时发送异步代码的次数
 let ajaxTimes = 0;
 let statusCode = {
   success: 200,
-  fail: 500,
-  noAuth: 201
+  noAuth: 401
 }
 
 export const request = (params) => {
@@ -41,13 +40,26 @@ export const request = (params) => {
           wx.navigateTo({
             url: '/pages/login/login'
           })
-        } else if (res.data.code == statusCode.fail) {
-          wx.showToast({
-            title: res.data.msg,
-            icon: 'none'
-          })
+        }
+        // } else if (res.data.code == statusCode.fail) {
+        //   wx.showToast({
+        //     title: res.data.msg,
+        //     icon: 'none'
+        //   })
+        // } else {
+        //   resolve(res.data);
+        // }
+        else if (res.data.code == statusCode.success) {
+          resolve(res.data)
         } else {
-          resolve(res.data);
+          setTimeout(()=>{
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none',
+              duration:2000,
+              mask:true
+            })
+          },100)
         }
       },
       fail: (res) => {

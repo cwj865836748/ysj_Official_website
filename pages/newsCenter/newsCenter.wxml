@@ -1,0 +1,7 @@
+<!--pages/newsCenter/newsCenter.wxml-->
+<navbar title="新闻中心">
+  <view class="newAllList">
+    <include src="/components/newsCenter/newsCenter.wxml" />
+    <include src="/components/noData/noData.wxml" />
+  </view>
+</navbar>

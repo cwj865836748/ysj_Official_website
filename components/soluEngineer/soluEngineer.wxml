@@ -1,0 +1,24 @@
+<scroll-view scroll-x class="scrollHead">
+  <view class="titleHead">
+    <block wx:for="{{titleList}}" wx:key="index">
+      <view class="titleOne {{index==titleIndex?'titleOneActive':''}}" bindtap="titleChange" data-index="{{index}}">
+        {{item.cateName}}
+      </view>
+    </block>
+  </view>
+</scroll-view>
+<scroll-view scroll-y bindscrolltolower="onReachBottom" style="height:100%">
+  <view class="solutionEngineer">
+    <block wx:for="{{solutionEngineerList}}" wx:key="index" wx:for-item="solutionEngineer">
+      <block wx:for="{{solutionEngineer}}" wx:key="id">
+        <navigator url="/pages/soluEngineerPerDetail/soluEngineerPerDetail?id={{item.id}}&type={{type}}"
+          hover-class="none" class="solutionEngineerOne">
+          <image src="{{item.picture}}"></image>
+          <view>{{item.title}}</view>
+          <view class="pageviews">浏览量:{{item.pageviews}}</view>
+        </navigator>
+      </block>
+    </block>
+  </view>
+  <include src="/components/noData/noData.wxml" />
+</scroll-view>

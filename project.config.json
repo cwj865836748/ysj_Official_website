@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -21,7 +21,7 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
-    "useMultiFrameRuntime": false,
+    "useMultiFrameRuntime": true,
     "useApiHook": true,
     "babelSetting": {
       "ignore": [],
@@ -36,11 +36,12 @@
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "useApiHostProcess": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.1",
-  "appid": "wx6a5654216935e847",
+  "appid": "wx154f075622a614c8",
   "projectname": "%E7%9B%88%E7%9B%9B%E6%8D%B7%E5%AE%98%E7%BD%91",
   "debugOptions": {
     "hidedInDevtools": []
@@ -50,23 +51,78 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
+    "plugin": {
       "list": []
     },
     "game": {
-      "list": []
-    },
-    "plugin": {
       "list": []
     },
     "gamePlugin": {
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "二级页面",
+          "pathName": "pages/secondPage/secondPage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "解决方案",
+          "pathName": "pages/solution/solution",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登录",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的",
+          "pathName": "pages/mine/mine",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "方案库",
+          "pathName": "pages/schemeLibrary/schemeLibrary",
+          "query": "id=2",
+          "scene": null
+        },
+        {
+          "name": "新闻中心",
+          "pathName": "pages/newsCenter/newsCenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "公众号",
+          "pathName": "pages/qrCode/qrCode",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "名片",
+          "pathName": "pages/card/card",
+          "query": "id=26",
+          "scene": null
+        },
+        {
+          "name": "详情",
+          "pathName": "pages/soluEngineerPerDetail/soluEngineerPerDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "名片详情",
+          "pathName": "pages/cardDetail/cardDetail",
+          "query": "id=1",
+          "scene": null
+        }
+      ]
     }
   }
 }

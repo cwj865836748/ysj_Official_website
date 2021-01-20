@@ -1,2 +1,44 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<wxs src="../../wxs/filter.wxs" module="filter"/>
+<navbar tabbar="3" isTabbar="{{true}}" back="{{false}}" title="个人中心" navbarType="2" headColor="{{headColor}}"
+  titleColor="{{titleColor}}">
+  <view class="mineHead">
+    <image src="/image/mine_bg@2x.png"></image>
+    <view class="mineDetail flex">
+      <image src="/image/company_icon@2x.png"></image>
+      <view class="company">
+        <view>{{company.companyName}}</view>
+        <view>账号: {{company.username}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <button class="loginOut" bindtap="loginOut">退出登录</button>
+  <view class="companyAll">
+    <view class="companyTitle">
+      <view class="companyEnName">
+        {{isAdmin?'ENTERPRISE CUSTOMER LIST':'PLAN LIBRARY'}}
+      </view>
+      <view class="companyName">
+        {{isAdmin?'企业客户列表':'我的方案库'}}
+      </view>
+    </view>
+    <block wx:if="{{isAdmin}}">
+      <view class="companyList">
+        <block wx:for="{{schemeList}}" wx:key="index" wx:for-item='schemeOne'>
+          <block wx:for="{{schemeOne}}" wx:key="id" wx:for-index="schemeIndex">
+            <navigator url="/pages/schemeLibrary/schemeLibrary?id={{item.id}}" class="companyOne flex-y-center" hover-class="none">
+              <view class="companyNum">{{filter.numSort(index,schemeIndex)}}</view>
+              <view class="flex-grow-1">{{item.companyName}}</view>
+              <image src="/image/home_next@2x.png"></image>
+            </navigator>
+          </block>
+        </block>
+      </view>
+    </block>
+    <block wx:else>
+      <include src="/components/schemeLibrary/schemeLibrary.wxml" />
+    </block>
+    <include src="/components/noData/noData.wxml" />
+  </view>
+</navbar>

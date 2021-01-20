@@ -12,10 +12,31 @@
 		<view class="title_head text-more-single" style='color:{{titleColor}};'>{{title}}</view>
 	</view>
 </view>
-<view wx:if="{{navbarType==1}}" class="slotContent"
+<view wx:if="{{navbarType==1}}" class="slotContent {{isTabbar?'slotContentPadding':''}} {{isPhoneX&&isTabbar?'slotContentIphoneXPadding':''}}"
 	style="height: calc(100vh - {{navHeight}}px);background:{{backgroundColor}};">
 	<slot></slot>
 </view>
-<view wx:if="{{navbarType==2}}" style="min-height:100%;background:{{backgroundColor}};">
+<view wx:if="{{navbarType==2}}" class="slotContent2 {{isTabbar?'slotContentPadding':''}} {{isPhoneX?'slotContentIphoneXPadding':''}}" style="background:{{backgroundColor}};height:{{height}}">
 	<slot></slot>
 </view>
+<van-tabbar active="{{ tabbar }}" bind:change="tabbarChange" wx:if="{{isTabbar}}">
+	<van-tabbar-item wx:for="{{tabbarList}}" wx:key="index">
+    <image
+      slot="icon"
+      src="{{ item.normal }}"
+      mode="aspectFit"
+      style="width: 24px; height: 24px;"
+    />
+    <image
+      slot="icon-active"
+      src="{{ item.active }}"
+      mode="aspectFit"
+      style="width: 24px; height: 24px;"
+    />
+    <view class="tabbarTitle flex-y-center {{index==tabbar?'article':''}}">
+      <image src="/image/i@2x.png" wx:if="{{!index&&!tabbar}}"></image>
+      <image src="/image/i_un@2x.png" wx:if="{{!index&&tabbar}}"></image>
+      {{item.name}}
+    </view>
+  </van-tabbar-item>
+</van-tabbar>

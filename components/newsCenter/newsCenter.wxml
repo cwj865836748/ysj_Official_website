@@ -1,0 +1,17 @@
+<scroll-view scroll-y style="height:100%" bindscrolltolower="onReachBottom">
+      <view class="newsList">
+        <block wx:for="{{newsList}}" wx:key="index" wx:for-item="newsOne">
+          <block wx:for="{{newsOne}}" wx:key='mediaId'>
+            <view class="newsOne" bindtap="goWechat" data-item="{{item}}">
+              <image src="{{item.thumbUrl}}"></image>
+              <view class="newsContent">
+                {{item.title}}
+                <view class="newsDate">
+                  {{item.createTime}}
+                </view>
+              </view>
+            </view>
+          </block>
+        </block>
+      </view>
+    </scroll-view>

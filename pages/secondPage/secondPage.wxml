@@ -1,0 +1,199 @@
+<!--pages/secondPage/secondPage.wxml-->
+<wxs src='../../wxs/filter.wxs' module="filter" />
+<navbar title="盈盛捷">
+  <van-tabs swipeable active="{{vanTabsActive }}" bind:change="vanTabsChange">
+    <!--企业简介-->
+    <van-tab title="企业简介">
+      <view class="detailContent">
+        <view class="allHead flex-x-between flex-y-center">
+          <view class="title">
+            <view>MAIN BUSINESS</view>
+            <text>企业简介</text>
+          </view>
+        </view>
+        <view class="mainContent">
+          <image src="{{companyBusiness.companyIntroductionPic}}" bindtap="toPreview"
+            data-img="{{companyBusiness.companyIntroductionPic}}" data-imgIndex="0">
+          </image>
+          <view class="mainName">厦门盈盛捷电力科技有限公司</view>
+          <view class="mainDetail">
+            {{companyBusiness.companyIntroduction}}
+          </view>
+        </view>
+        <view class="allHead flex-x-between flex-y-center">
+          <view class="title">
+            <view>MLIEPOST</view>
+            <text>里程碑</text>
+          </view>
+        </view>
+        <view class="mliepostContent">
+          <block wx:for="{{milePostList}}" wx:key="index">
+            <view class="mliepostOne">
+              <!-- <view class="mliepostOneYear">
+                {{item.toYear}}
+              </view> -->
+              <block wx:for="{{item.allMonth}}" wx:key="toYear" wx:for-item="month" wx:for-index="honorIndex">
+                <view class="mliepostOneHonor">
+                  <view class="honorRight">
+                    <block wx:for="{{month.allDescription}}" wx:key="id" wx:for-item="items">
+                      <view class="honorDesc">{{items.description}}</view>
+                      <!-- <view class="honorMonth"> -->
+                    </block>
+                    <view class="honorMonth">{{filter.numLength(month.toMonth)}}月</view>
+                    <view wx:if="{{honorIndex==item.allMonth.length-1}}" class="honorYear">{{item.toYear}}</view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </block>
+        </view>
+      </view>
+    </van-tab>
+    <!--企业文化-->
+    <van-tab title="企业文化">
+      <view class="detailContent">
+        <view class="allHead flex-x-between flex-y-center">
+          <view class="title">
+            <view>CORPORATE CULTURE</view>
+            <text>企业文化</text>
+          </view>
+        </view>
+        <view class="cultureContent">
+          <view class="cultureOne flex-x-between">
+            <view class="cultureLogo">
+              <image src="/image/cultureOne@2x.png"></image>
+              <text>文化基因</text>
+            </view>
+            <view class="cultureText">
+              一群诚实敬业的人,以安全、严谨的方式、用心的行为方式为电气技术领域提供高品质专业的服务
+            </view>
+          </view>
+          <view class="cultureTwo">
+            <view class="cultureName">
+              工作理念：
+              <text>安全、严谨、用心</text>
+            </view>
+            <view class="cultureName">
+              核心价值观：
+              <text>共担、共享、共赢、共识</text>
+            </view>
+            <view class="cultureName">
+              企业愿景:
+              <text>成为电气技术专业服务领域的一流企业</text>
+            </view>
+            <view class="cultureName">
+              发展目标:
+              <text>做电气专业技术服务的开拓者、服务标准的制定者</text>
+            </view>
+            <view class="cultureLogo cultureLogo2">
+              <image src="/image/cultureTwo@2x.png"></image>
+              <text>核心理念</text>
+            </view>
+          </view>
+          <view class="cultureThree cultureOne  flex-x-between">
+            <view class="cultureLogo">
+              <image src="/image/cultureOne@2x.png"></image>
+              <text>人才理念</text>
+            </view>
+            <view class="cultureText">
+              尊重价值、以人为本、人尽其才
+            </view>
+          </view>
+          <view class="cultureFour cultureTwo  flex-x-between">
+            <view class="">
+              团队意识、诚信意识、服务意识、保密意识
+            </view>
+            <view class="cultureLogo cultureLogo3">
+              <image src="/image/cultureFour@2x.png"></image>
+              <text>员工意识</text>
+            </view>
+          </view>
+          <view class="cultureFive">
+            <view class="cultureLogo">
+              <image src="/image/cultureFive@2x.png"></image>
+              <text>员工风采</text>
+            </view>
+            <view class="culturePic">
+              <block wx:for="{{staffList}}" wx:key="index">
+                <image src="{{item.url}}" bindtap="toPreview" data-img="{{item.url}}" data-imgIndex="1">
+                </image>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+    <!--专业资质-->
+    <van-tab title="专业资质">
+      <view class="detailContent qualification flex-col">
+        <view class="allHead flex-x-between flex-y-center">
+          <view class="title">
+            <view>PROFESSIONAL QUALIFICATION</view>
+            <text>专业资质</text>
+          </view>
+        </view>
+        <view class="qualificationHead flex-x-between flex-y-center">
+          <view class="{{qualificationActive==1?'qualificationActive':''}}" bindtap="qualificationTab" data-index="1">
+            公司资质</view>
+          <view class="{{qualificationActive==2?'qualificationActive':''}}" bindtap="qualificationTab" data-index="2">
+            认证证书</view>
+          <view class="{{qualificationActive==3?'qualificationActive':''}}" bindtap="qualificationTab" data-index="3">
+            检验报告</view>
+        </view>
+        <view class="scrollView">
+          <scroll-view scroll-y style="height:100%" bindscrolltolower="onReachBottom">
+            <view class="qualificationList flex-wrap">
+              <block wx:for="{{qualificationList}}" wx:key="index" wx:for-item="qualificationOne">
+                <block wx:for="{{qualificationOne}}" wx:key="id">
+                  <view class="qualificationImg" bindtap="toPreview" data-img="{{item.picture}}" data-imgIndex="2">
+                    <image mode="aspectFit" src="{{item.picture}}">
+                    </image>
+                  </view>
+                </block>
+              </block>
+            </view>
+            <include src="/components/noData/noData.wxml" />
+          </scroll-view>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="专家介绍">
+      <view class="detailContent experts flex-col">
+        <view class="allHead flex-x-between flex-y-center">
+          <view class="title">
+            <view>EXPERTS LIST</view>
+            <text>专家列表</text>
+          </view>
+        </view>
+        <view class="scrollView">
+          <scroll-view scroll-y style="height:100%" bindscrolltolower="onReachBottom">
+            <view class="expertsList">
+              <block wx:for="{{expertList}}" wx:key="index" wx:for-item="expertOne">
+                <block wx:for="{{expertOne}}" wx:key="id">
+                  <navigator url="/pages/expertIntroduction/expertIntroduction?id={{item.id}}"
+                            hover-class="none" class="expertsOne">
+                    <image src="/image/experts_list@2x.png" class="expertsBg"></image>
+                    <view class="expertsLeft flex-y-center">
+                      <image src="{{item.avatar}}">
+                      </image>
+                      <view class="expertsDetail flex-grow-1">
+                        <view class="expertsName flex-x-between flex-y-center">
+                          <text>{{item.name}}</text>
+                          <view class="expertsMore flex-y-center">
+                            查看详情
+                            <image src="/image/home_next@2x.png"></image>
+                          </view>
+                        </view>
+                        <view class='expertsWork'>{{item.profession}}</view>
+                      </view>
+                    </view>
+                  </navigator>
+                </block>
+              </block>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</navbar>

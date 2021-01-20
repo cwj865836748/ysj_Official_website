@@ -127,14 +127,18 @@ const isNull = data => {
   if (data.content) {
     return true
   }
-  const topic = data.topic ? data.topic : '不能为空'
+  const prompt = data.prompt ? data.prompt : '不能为空'
   showToast({
-    title: `${data.title}${topic}`
+    title: `${data.title}${prompt}`
   })
   return false
 }
 const checkPhone = (value) => {
   return !(/^1[3456789]\d{9}$/.test(value))
+}
+const checkEmail = value => {
+  const myReg=/^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/
+  return myReg.test(value)
 }
 const turnImg = (html) => {
   if (!html) {
@@ -233,6 +237,7 @@ module.exports = {
   wxPromisify: wxPromisify,
   isNull: isNull,
   checkPhone: checkPhone,
+  checkEmail:checkEmail,
   turnImg: turnImg,
   circleImg: circleImg,
   darwRoundRect: darwRoundRect,

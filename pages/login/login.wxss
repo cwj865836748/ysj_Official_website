@@ -1,0 +1,57 @@
+/* pages/login/login.wxss */
+.loginBg {
+  height: 488rpx;
+  position: relative;
+}
+
+.loginBg>image {
+  height: 100%;
+}
+
+.loginBg>.loginName {
+  position: absolute;
+  left: 70rpx;
+  bottom: 40rpx;
+  font-weight: bold;
+  font-size: 48rpx;
+  color: var(--colorOne);
+}
+
+.loginForm {
+  padding: 48rpx 70rpx 0;
+  font-weight: bold;
+  font-size: 30rpx;
+  color: var(--colorOne);
+}
+
+.loginForm>.formInput {
+  height: 124rpx;
+  background: #fff;
+  border-radius: 200rpx;
+  box-shadow: 0rpx 6rpx 24rpx 0rpx rgba(0, 13, 35, 0.06);
+  padding-left: 48rpx;
+  margin-bottom: 48rpx;
+}
+.loginForm>.formInput:nth-child(2) {
+  margin-bottom: 96rpx;
+}
+.loginForm>.formInput>text {
+  position: relative;
+  margin-right: 60rpx;
+}
+.loginForm>.formInput>text::after {
+  content: '';
+  position: absolute;
+  right: -30rpx;
+  top: 4rpx;
+  width: 2rpx;
+  height: 36rpx;
+  background: #ececee;
+}
+.loginForm>.lognBtn {
+  height: 112rpx;
+  background: #0077cb;
+  border-radius: 56rpx;
+  font-size: 32rpx;
+  color: #ffffff;
+}

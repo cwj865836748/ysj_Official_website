@@ -1,0 +1,6 @@
+/* pages/newsCenter/newsCenter.wxss */
+@import '/components/newsCenter/newsCenter.wxss';
+@import "/components/noData/noData.wxss";
+.newAllList .newsList {
+  padding: 36rpx 30rpx;
+}

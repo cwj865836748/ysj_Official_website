@@ -1,0 +1,96 @@
+<import src="../../wxParse/wxParse.wxml" />
+<navbar title="方案详情">
+
+  <view class="program {{fileList.length?'':'programNo'}} {{isIphoneX&&fileList.length?'programIphoneX':''}}">
+    <view class="programLogo flex-x-center">
+      <image src="/image/YSJ@2x.png"></image>
+    </view>
+    <view class="programTitle flex-xy-center">
+      {{detail.title}}
+    </view>
+    <template is="wxParse" data="{{wxParseData:detailContent.nodes}}" />
+    <!--判断是否有下载文件-->
+    <view class="downloadFile {{isIphoneX?'iphoneXBottom':''}}" wx:if="{{fileList.length}}">
+      <button class=" flex-xy-center" bindtap="openShow"  data-show="{{true}}">
+        下载文件
+      </button>
+    </view>
+    <!--判断提交结束方式-->
+    <!-- <button class="downloadFile downloadFileOK flex-xy-center" wx:if="{{isComplete&&isAuth}}">
+      已提交申请，请等待审核
+    </button>
+    <button class="downloadFile downloadFileOK flex-xy-center" wx:if="{{isComplete&&!isAuth}}">
+      方案已发您邮箱，请查收
+    </button> -->
+    <van-popup show="{{ show }}" position="bottom" bind:close="openShow" data-show="{{false}}">
+      <view class="downFile">
+        <block wx:if="{{step==1}}">
+          <view class="downloadList">
+            <view class="chooseFile">选择所需下载的资料</view>
+            <block wx:for="{{fileList}}" wx:key="index">
+              <view class="downloadFileOne flex-y-center" bindtap="downloadFileSelect" data-index="{{index}}"
+                data-id="{{item.id}}">
+                <image wx:if="{{item.isCheck}}" src="/image/select@2x.png"></image>
+                <image wx:else src="/image/unselect@2x.png"></image>
+                <text class="{{item.isCheck?'downloadFileOneActive':''}}">{{item.name}}</text>
+              </view>
+            </block>
+          </view>
+          <button bindtap="goStep" data-step="{{1}}" class="downBtn flex-xy-center">下载文件</button>
+        </block>
+        <block wx:if="{{step==2&&isAuth}}">
+          <view class="flex-x-center">填写下载申请资料</view>
+          <view class="expolre flex-x-center">
+            申请通过后将发送该方案至您的邮箱地址
+          </view>
+          <view class="applyForm">
+            <view class="applyFormOne flex-y-center {{rule.name?'applyFormWarn':''}}">
+              <view class="applyFormKey {{rule.name?'applyFormWarnSize':''}}">姓名:</view>
+              <input type="text" placeholder="请输入姓名" bindinput="onInput" data-key="name"
+                placeholder-class="applyFormOnePlaceholder {{rule.companyName?'applyFormWarnSize':''}}" cursor-spacing="20"/>
+            </view>
+            <view class="applyFormOne flex-y-center {{rule.phone?'applyFormWarn':''}}">
+              <view class="applyFormKey {{rule.phone?'applyFormWarnSize':''}}">电话:</view>
+              <input type="number" placeholder="请输入电话" bindinput="onInput" data-key="phone"
+                placeholder-class="applyFormOnePlaceholder {{rule.phone?'applyFormWarnSize':''}}" maxlength="11" cursor-spacing="20"/>
+            </view>
+            <view class="applyFormOne flex-y-center {{rule.companyName?'applyFormWarn':''}}">
+              <view class="applyFormKey {{rule.companyName?'applyFormWarnSize':''}}">公司名称:</view>
+              <input type="text" placeholder="请输入公司名称"
+                placeholder-class="applyFormOnePlaceholder {{rule.companyName?'applyFormWarnSize':''}}"
+                bindinput="onInput" data-key="companyName" cursor-spacing="20"/>
+            </view>
+            <view class="applyFormOne flex-y-center {{rule.positionName?'applyFormWarn':''}}">
+              <view class="applyFormKey {{rule.positionName?'applyFormWarnSize':''}}">职位:</view>
+              <input type="text" placeholder="请输入职位" bindinput="onInput" data-key="positionName"
+                placeholder-class="applyFormOnePlaceholder {{rule.positionName?'applyFormWarnSize':''}}" cursor-spacing="20" />
+            </view>
+            <view class="applyFormOne flex-y-center {{rule.email?'applyFormWarn':''}}">
+              <view class="applyFormKey {{rule.email?'applyFormWarnSize':''}}">邮箱地址:</view>
+              <input type="text" placeholder="请输入邮箱地址" bindinput="onInput" data-key="email"
+                placeholder-class="applyFormOnePlaceholder {{rule.email?'applyFormWarnSize':''}}" cursor-spacing="30" />
+            </view>
+            <button bindtap="goStep" data-step="{{2}}" class="downBtn flex-xy-center">提交申请</button>
+          </view>
+        </block>
+        <block wx:if="{{step==2&&!isAuth}}">
+          <view class="flex-x-center">确认邮箱</view>
+          <view class="applyForm">
+            <view class="applyFormOne applyFormOnlyOne flex-y-center {{rule.email?'applyFormWarn':''}}">
+              <view class="applyFormKey {{rule.email?'applyFormWarnSize':''}}">确认邮箱:</view>
+              <input type="text" placeholder="请输入邮箱" bindinput="onInput" data-key="email"
+                placeholder-class="applyFormOnePlaceholder {{rule.email?'applyFormWarnSize':''}}"
+                value="{{sendForm.email}}" cursor-spacing="30" />
+            </view>
+            <button bindtap="goStep" data-step="{{2}}" class="downBtn flex-xy-center">确定提交</button>
+          </view>
+        </block>
+      </view>
+    </van-popup>
+    <van-dialog use-slot show="{{ okShow }}">
+      <view class="okShow flex-xy-center">
+        {{isAuth ? '已提交申请，请等待审核' : '方案已发您邮箱，请查收'}}
+      </view>
+    </van-dialog>
+  </view>
+</navbar>

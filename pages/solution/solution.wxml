@@ -1,2 +1,4 @@
 <!--pages/solution/solution.wxml-->
-<text>pages/solution/solution.wxml</text>
+<navbar tabbar="1" isTabbar="{{true}}" back="{{false}}" title="解决方案">
+  <include src="/components/soluEngineer/soluEngineer.wxml"/>
+</navbar>

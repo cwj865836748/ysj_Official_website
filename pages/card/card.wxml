@@ -1,0 +1,151 @@
+<!--pages/card/card.wxml-->
+<navbar title="名片详情" back="{{false}}" home="{{true}}">
+  <block wx:if="{{personData}}">
+    <view class="cardPerson">
+      <image src="{{personData.cardPicture}}" catchtap="toPreview" data-img="{{personData.cardPicture}}"
+        data-imgIndex="1"></image>
+      <view class="cardDetail">
+        <view class="cardName flex-x-between flex-y-center">
+          <text>{{personData.name}}</text>
+          <view class="cardLogo flex-y-center">
+            <image src="/image/share@2x.png" catchtap="popupShow" data-show="{{true}}"></image>
+            <image src="/image/save@2x.png" catchtap="doSaveMsg"></image>
+          </view>
+        </view>
+        <view class="cardPosition">
+          {{personData.position}}
+        </view>
+        <view class="cardCompany">
+          厦门盈盛捷电力科技有限公司
+        </view>
+      </view>
+    </view>
+    <view class="aboutContent cardAbout">
+      <view class="phone aboutUsDistance">
+        <view class="aboutTitle">电话</view>
+        <view class="aboutDesc flex-x-between">
+          <text class="aboutTitleBlue" bindtap="toPhone"> {{personData.phone}}</text>
+          <image src="/image/copy@2x.png" bindtap="copyText" data-text="{{personData.phone}}" class="aboutIcon">
+          </image>
+        </view>
+      </view>
+      <view class="email aboutUsDistance">
+        <view class="aboutTitle">邮箱</view>
+        <view class="aboutDesc flex-x-between">
+          <text>{{personData.email}}</text>
+          <image src="/image/copy@2x.png" class="aboutIcon" bindtap="copyText" data-text="{{personData.email}}">
+          </image>
+        </view>
+      </view>
+      <view class="address aboutUsDistance">
+        <view class="aboutTitle">地址</view>
+        <view class="aboutDesc flex-x-between">
+          <text>{{personData.address}}
+          </text>
+          <image src="/image/location@2x.png" class="aboutIcon" bindtap="openMap"> </image>
+        </view>
+      </view>
+      <view class="wechatCode">
+        <view class="aboutTitle">微信</view>
+        <view class="aboutDesc flex-x-between">
+          <view>{{personData.wechatNum}}</view>
+          <image src="/image/copy@2x.png" class="aboutIcon" bindtap="copyText" data-text="{{personData.wechatNum}}">
+          </image>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!--解决方案推荐-->
+  <view class="schemeRecommendation">
+    <view class="allHead flex-x-between flex-y-center">
+      <view class="title">
+        <view>SCHEME RECOMMENDATION</view>
+        <text>解决方案推荐</text>
+      </view>
+      <navigator url="/pages/solution/solution" hover-class="none" class="toMore flex-y-center">
+        <text>查看更多</text>
+        <image src="/image/home_next@2x.png"></image>
+      </navigator>
+    </view>
+    <scroll-view scroll-x style="margin-top:44rpx;height:262rpx;">
+      <view class="solutionRemannd">
+        <block wx:for="{{solutionList}}" wx:key="index">
+          <navigator url="/pages/soluEngineerPerDetail/soluEngineerPerDetail?id={{item.id}}&type={{1}}"
+            hover-class="none" class="solutionRemanndOne">
+            <image src='{{item.smallPicture}}'>
+            </image>
+            <view class="text-more-single">{{item.title}}</view>
+          </navigator>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+  <!--专家介绍-->
+  <view class="introductionOfExperts">
+    <view class="allHead flex-x-between flex-y-center">
+      <view class="title">
+        <view>INTRODUCTION OF EXPERTS</view>
+        <text>专家介绍</text>
+      </view>
+      <navigator url="/pages/secondPage/secondPage?tabIndex=3" hover-class="none" class="toMore flex-y-center">
+        <text>查看更多</text>
+        <image src="/image/home_next@2x.png"></image>
+      </navigator>
+    </view>
+    <scroll-view scroll-x style="margin-top:44rpx">
+      <view class="expertList">
+        <block wx:for="{{expertList}}" wx:key="index">
+          <navigator url="/pages/expertIntroduction/expertIntroduction?id={{item.id}}" hover-class="none"
+            class="expertOne">
+            <image src="{{item.smallPic}}" catchtap="toPreview" data-img="{{item.smallPic}}" data-imgIndex="2"></image>
+            <view class="expertTilte text-more-single">{{item.profession}}</view>
+            <view class="expertName">{{item.name}}</view>
+          </navigator>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+  <!--企业简介-->
+  <view class="mainBusiness">
+    <view class="allHead flex-x-between flex-y-center">
+      <view class="title">
+        <view>MAIN BUSINESS</view>
+        <text>企业简介</text>
+      </view>
+      <navigator url="/pages/secondPage/secondPage?tabIndex=0" hover-class="none" class="toMore flex-y-center">
+        <text>查看更多</text>
+        <image src="/image/home_next@2x.png"></image>
+      </navigator>
+    </view>
+    <view class="mainBusinessContent">
+      <image src="{{companyData.companyIntroductionPic}}" catchtap="toPreview"
+        data-img="{{companyData.companyIntroductionPic}}" data-imgIndex="3">
+      </image>
+      <view class="mainBusinessTitle">厦门盈盛捷电力科技有限公司</view>
+      <view class="mainBusinessDetail">
+        {{companyData.companyIntroduction}}
+      </view>
+    </view>
+  </view>
+  <!-- <van-popup show="{{ contactShow }}" position="bottom" bind:close="popupShow" data-show="{{false}}">
+    <view class="contactPerson">
+      <button class="flex-xy-center" bindtap="doSaveMsg" data-index="{{1}}">创建新联系人</button>
+      <button class="flex-xy-center" bindtap="doSaveMsg" data-index="{{2}}">添加到现有联系人</button>
+    </view>
+    <button class="btnCancel flex-xy-center">取消</button>
+  </van-popup> -->
+  <van-popup show="{{ wechatShow }}" position="bottom" bind:close="popupShow" data-show="{{false}}">
+    <view class="weChatShare flex-x-between">
+      <button open-type='share' hover-class="none" class="btnShare flex-col flex-y-center">
+        <image src="/image/wechat@2x.png"></image>
+        <view>微信</view>
+      </button>
+      <navigator url='/pages/cardDetail/cardDetail?id={{personData.id}}' hover-class="none"
+        class="btnShare flex-col flex-y-center">
+        <image src="/image/posters@2x.png"></image>
+        <view>名片海报</view>
+      </navigator>
+    </view>
+    <button class="btnCancel flex-xy-center" bindtap="popupShow" data-show="{{false}}">取消</button>
+  </van-popup>
+</navbar>

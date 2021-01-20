@@ -1,4 +1,259 @@
 <!--pages/index/index.wxml-->
-<navbar back="{{false}}" title="" navbarType="2" headColor="{{headColor}}" titleColor="{{titleColor}}">
- 
+<navbar tabbar="0" isTabbar="{{true}}" back="{{false}}" title="" navbarType="2" headColor="{{headColor}}"
+  titleColor="{{titleColor}}" height="100%">
+  <view slot="icon">
+    <image src="/image/logo@2x.png" class="indexLogo"></image>
+  </view>
+  <scroll-view bindscroll="scroll" scroll-y scroll-into-view="{{toView}}" style="height:100%;">
+    <view class="all">
+      <view class="home_swiper">
+        <swiper autoplay="{{true}}" interval="3000" indicator-active-color="#478cfa"
+          indicator-color="background: rgba(0,0,0,0.23);" bindchange="swiperChange">
+          <block wx:for="{{swiperList}}" wx:key="index">
+            <swiper-item>
+              <image src="{{item.imageUrl}}" bindtap="goDetail" data-item="{{item}}"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class="dots flex-x-center">
+          <block wx:for="{{swiperList}}" wx:key="index">
+            <view class="dot{{index == swiperIndex ? ' active' : ''}}"></view>
+          </block>
+        </view>
+      </view>
+      <view class="home_5Sort flex-y-center flex-x-between">
+        <block wx:for="{{sortList}}" wx:key="index">
+          <view class="sortOne">
+            <view class="sortHead flex-y-center">
+              <image src="{{item.image}}"></image>
+              <text>{{item.num}}+</text>
+            </view>
+            <view class="sortTitle">{{item.name}}</view>
+          </view>
+        </block>
+      </view>
+      <!--锚点-->
+      <view class="home_6Menu flex-wrap">
+        <block wx:for="{{menuList}}" wx:key="index">
+          <view class="menuOne flex-xy-center" bindtap="goView" data-id="{{item.id}}">
+            <image src="/image/nav_circle@2x.png"></image>
+            <text>{{item.name}}</text>
+          </view>
+        </block>
+      </view>
+
+      <!--企业简介-->
+      <view class="mainBusiness">
+        <view class="allHead flex-x-between flex-y-center">
+          <view class="title">
+            <view>MAIN BUSINESS</view>
+            <text>企业简介</text>
+          </view>
+          <navigator url="/pages/secondPage/secondPage?tabIndex=0" hover-class="none" class="toMore flex-y-center">
+            <text>查看更多</text>
+            <image src="/image/home_next@2x.png"></image>
+          </navigator>
+        </view>
+        <view class="mainBusinessContent">
+          <block wx:if="{{companyBusiness.type=='image'}}">
+            <image src="{{companyBusiness.companyIntroductMulti}}" bindtap="toPreview"
+              data-img="{{companyBusiness.companyIntroductMulti}}" data-imgIndex="0">
+            </image>
+          </block>
+          <block wx:else>
+            <video src="{{companyBusiness.companyIntroductMulti}}"></video>
+          </block>
+          <view class="mainBusinessTitle">厦门盈盛捷电力科技有限公司</view>
+          <view class="mainBusinessDetail">
+            {{companyBusiness.companyIntroduction}}
+          </view>
+          <view class="mainBusinessImage flex-x-center">
+            <view class="mainCenter">
+              <image src="/image/value@2x.png"></image>
+              <text>客户价值</text>
+              <view class="theme theme1 flex-y-center">
+                <text>01</text>
+                电网卫士
+              </view>
+              <view class="theme theme2 flex-y-center">
+                <text>02</text>
+                故障诊断
+              </view>
+              <view class="theme theme3 flex-y-center">
+                <text>03</text>
+                客户赋能
+              </view>
+              <view class="theme theme4 flex-y-center">
+                <text>04</text>
+                深度把脉
+              </view>
+              <view class="theme theme5 flex-y-center">
+                <text>05</text>
+                产品体系
+              </view>
+              <view class="theme theme6 flex-y-center">
+                <text>06</text>
+                能源管理
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="maodian" id="mainBusiness"></view>
+      </view>
+      <!--专业资质-->
+      <view class="corporateCulture">
+        <view class="allHead flex-x-between flex-y-center">
+          <view class="title">
+            <view>PROFESSIONAL QUALIFICATION</view>
+            <text>专业资质</text>
+          </view>
+          <navigator url="/pages/secondPage/secondPage?tabIndex=2" hover-class="none" class="toMore flex-y-center">
+            <text>查看更多</text>
+            <image src="/image/home_next@2x.png"></image>
+          </navigator>
+        </view>
+        <scroll-view scroll-x style="margin-top:44rpx">
+          <view class="certificateList">
+            <block wx:for="{{certificateList}}" wx:key="index">
+              <view class="certificateOne" bindtap="toPreview" data-img="{{item.picture}}" data-imgIndex="1">
+                <image src="{{item.picture}}" mode="aspectFit"></image>
+              </view>
+            </block>
+          </view>
+        </scroll-view>
+        <view class="maodian" id="corporateCulture"></view>
+      </view>
+      <!--专家介绍-->
+      <view class="introductionOfExperts">
+        <view class="allHead flex-x-between flex-y-center">
+          <view class="title">
+            <view>INTRODUCTION OF EXPERTS</view>
+            <text>专家介绍</text>
+          </view>
+          <navigator url="/pages/secondPage/secondPage?tabIndex=3" hover-class="none" class="toMore flex-y-center">
+            <text>查看更多</text>
+            <image src="/image/home_next@2x.png"></image>
+          </navigator>
+        </view>
+        <scroll-view scroll-x style="margin-top:44rpx">
+          <view class="expertList">
+            <block wx:for="{{expertList}}" wx:key="index">
+              <navigator url="/pages/expertIntroduction/expertIntroduction?id={{item.id}}" hover-class="none"
+                class="expertOne">
+                <image src="{{item.smallPic}}">
+                </image>
+                <view class="expertTilte text-more-single">{{item.profession}}</view>
+                <view class="expertName">{{item.name}}</view>
+              </navigator>
+            </block>
+          </view>
+        </scroll-view>
+        <view class="maodian" id="introductionOfExperts"></view>
+      </view>
+      <!--品牌客户-->
+      <view class="brandCustomers">
+        <view class="allHead flex-x-between flex-y-center">
+          <view class="title">
+            <view>BRAND CUSTOMERS</view>
+            <text>品牌客户</text>
+          </view>
+        </view>
+        <view class="brandAll flex-wrap">
+          <block wx:for="{{brandList}}" wx:key="index">
+            <view class="brandOne ">
+              <image src="{{item.logo}}"></image>
+            </view>
+          </block>
+        </view>
+        <view class="maodian" id="brandCustomers"></view>
+      </view>
+      <!--新闻中心-->
+      <view class="newsCenter">
+        <view class="allHead flex-x-between flex-y-center">
+          <view class="title">
+            <view>NEWS CENTER</view>
+            <text>新闻中心</text>
+          </view>
+          <navigator url="/pages/newsCenter/newsCenter" hover-class="none" class="toMore flex-y-center">
+            <text>查看更多</text>
+            <image src="/image/home_next@2x.png"></image>
+          </navigator>
+        </view>
+        <include src="/components/newsCenter/newsCenter.wxml" />
+        <view class="maodian" id="newsCenter"></view>
+      </view>
+      <!--关于我们-->
+      <view class="aboutUs" id="aboutUs">
+        <view class="allHead flex-x-between flex-y-center">
+          <view class="title">
+            <view>ABOUT US</view>
+            <text>关于我们</text>
+          </view>
+        </view>
+        <view class="aboutContent">
+          <view class="phone aboutUsDistance">
+            <view class="aboutTitle">电话</view>
+            <view class="aboutDesc flex-x-between">
+              <text class="aboutTitleBlue" bindtap="toPhone">{{companyDetail.infoPhone}}</text>
+              <image src="/image/copy@2x.png" class="aboutIcon" bindtap="copyText"
+                data-text="{{companyDetail.infoPhone}}"> </image>
+            </view>
+          </view>
+          <view class="email aboutUsDistance">
+            <view class="aboutTitle">邮箱</view>
+            <view class="aboutDesc flex-x-between">
+              <text>{{companyDetail.infoEmail}}
+              </text>
+              <image src="/image/copy@2x.png" class="aboutIcon" bindtap="copyText"
+                data-text="{{companyDetail.infoEmail}}"> </image>
+            </view>
+          </view>
+          <view class="address aboutUsDistance">
+            <view class="aboutTitle">地址</view>
+            <view class="aboutDesc flex-x-between">
+              <text>{{companyDetail.infoAddress}}
+              </text>
+              <image src="/image/location@2x.png" class="aboutIcon" bindtap="openMap"> </image>
+            </view>
+          </view>
+          <view class="network aboutUsDistance">
+            <view class="aboutTitle">网址</view>
+            <view class="aboutDesc flex-x-between">
+              <text class="aboutTitleBlue">{{companyDetail.infoNet}}
+              </text>
+              <image src="/image/copy@2x.png" class="aboutIcon" bindtap="copyText"
+                data-text="{{companyDetail.infoNet}}"> </image>
+            </view>
+          </view>
+          <view class="wechatCode">
+            <view class="aboutTitle">公众号</view>
+            <view class="aboutDesc flex-x-between">
+              <view class="flex">
+                <text>{{companyDetail.infoPublicCode}}
+                </text>
+                <navigator hover-class="none" url="/pages/qrCode/qrCode">
+                  <image src="/image/qr_code@2x.png" class="aboutIcon aboutUsDistance2"> </image>
+                </navigator>
+              </view>
+              <image src="/image/copy@2x.png" class="aboutIcon" bindtap="copyText"
+                data-text="{{companyDetail.infoPublicCode}}"> </image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <movable-area class="movableArea" style="width:{{windowWidth}}px;height:{{windowHeight}}px;" wx:if="{{x}}">
+        <movable-view class="movableView" x="{{x}}" y="{{y}}" direction="all" animation="{{false}}">
+          <view class="customerService">
+            <button hover-class="none" bindtap="toPhone">
+              <image src="/image/home_consult@2x.png"></image>
+            </button>
+            <button hover-class="none" open-type='contact'>
+              <image src="/image/home_server@2x.png"></image>
+            </button>
+          </view>
+        </movable-view>
+      </movable-area>
+    </view>
+  </scroll-view>
 </navbar>

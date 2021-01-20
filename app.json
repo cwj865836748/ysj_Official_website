@@ -3,7 +3,17 @@
     "pages/index/index",
     "pages/solution/solution",
     "pages/engineeringCase/engineeringCase",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/secondPage/secondPage",
+    "pages/qrCode/qrCode",
+    "pages/expertIntroduction/expertIntroduction",
+    "pages/newsCenter/newsCenter",
+    "pages/soluEngineerPerDetail/soluEngineerPerDetail",
+    "pages/card/card",
+    "pages/cardDetail/cardDetail",
+    "pages/login/login",
+    "pages/schemeLibrary/schemeLibrary",
+    "pages/jump/jump"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -11,33 +21,6 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black",
     "navigationStyle":"custom"
-  },
-  "tabBar": {
-    "color": "#cccccc",
-    "selectedColor": "#333333",
-    "borderStyle": "white",
-    "backgroundColor": "#FFFFFF",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "我盈家"
-  
-      },
-      {
-        "pagePath": "pages/solution/solution",
-        "text": "解决方案"
-  
-      },
-      {
-        "pagePath": "pages/engineeringCase/engineeringCase",
-        "text": "工程案例"
-  
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "text": "我的"
-      }
-    ]
   },
   "sitemapLocation": "sitemap.json",
   "permission": {

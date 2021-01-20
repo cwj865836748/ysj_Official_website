@@ -1,7 +1,7 @@
 <!--components/noData/noData.wxml-->
 <view class="noData">
 	<view class="qz-noda-box" wx:if="{{noData}}">
-	<image src="/images/nodate@2x.png" class="a-image"></image>
+	<image src="/image/nodata/nodate@2x.png" class="a-image"></image>
 		<view class="a-title">暂无数据</view>
 	</view>
 
@@ -10,12 +10,12 @@
 	</view>
 
 	<view class="qz-noda-box" wx:if="{{noInternet}}">
-		<image mode="cover" src="/images/nodata/empty_no_network@2x.png" class="a-image"></image>
+		<image mode="cover" src="/image/nodata/empty_no_network@2x.png" class="a-image"></image>
 		<view class="a-title">暂无网络，点击页面刷新</view>
 	</view>
 
 	<view class="qz-noda-box" wx:if="{{noContent}}">
-		<image mode="cover" src="/images/nodata/empty_no_content@2x.png" class="a-image"></image>
+		<image mode="cover" src="/image/nodata/empty_no_content@2x.png" class="a-image"></image>
 		<view class="a-title">未找到相关内容</view>
 	</view>
 

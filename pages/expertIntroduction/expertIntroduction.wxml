@@ -1,0 +1,11 @@
+<!--pages/expertIntroduction/expertIntroduction.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<navbar title="专家介绍">
+	<view class="expertDetail">
+		<view class="expertName">
+			{{expertInfo.name}}
+		</view>
+		<template is="wxParse" data="{{wxParseData:expertContent.nodes}}"/>
+	</view>
+
+</navbar>

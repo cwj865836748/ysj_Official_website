@@ -1,2 +1,4 @@
 <!--pages/engineeringCase/engineeringCase.wxml-->
-<text>pages/engineeringCase/engineeringCase.wxml</text>
+<navbar tabbar="2" isTabbar="{{true}}" back="{{false}}" title="工程案例">
+  <include src="/components/soluEngineer/soluEngineer.wxml"/>
+</navbar>

@@ -1,1 +1,2 @@
 /* pages/engineeringCase/engineeringCase.wxss */
+@import "/components/soluEngineer/soluEngineer.wxss";

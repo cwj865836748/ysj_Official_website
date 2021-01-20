@@ -1,0 +1,12 @@
+/* pages/expertIntroduction/expertIntroduction.wxss */
+@import "../../wxParse/wxParse.wxss";
+.expertDetail {
+  padding:32rpx 30rpx;
+}
+.expertName {
+  font-size: 34rpx;
+  color:var(--colorOne); 
+  text-align: center;
+  margin-bottom: 32rpx;
+  font-weight: bold;
+}

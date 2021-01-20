@@ -1,0 +1,22 @@
+<!--pages/schemeLibrary/schemeLibrary.wxml-->
+<navbar title="方案库">
+    <scroll-view scroll-y style="height:100%;" bindscrolltolower="onReachBottom" >
+      <view class="schemeList">
+        <block wx:for="{{schemeList}}" wx:key="index" wx:for-item="schemeOne">
+          <block wx:for="{{schemeOne}}" wx:key="id">
+            <navigator url="/pages/soluEngineerPerDetail/soluEngineerPerDetail?id={{item.id}}&type={{4}}" hover-class="none" class="schemeOne">
+              <view class="schemeName">
+                {{item.title}}
+              </view>
+              <view class="schemeDate">方案时间: {{item.createTime}}</view>
+              <view class="schemeDesc flex-y-center flex-x-between">
+                <text>查看详情</text>
+                <image src="/image/home_next@2x.png"></image>
+              </view>
+            </navigator>
+          </block>
+        </block>
+        <include src="/components/noData/noData.wxml" />
+      </view>
+    </scroll-view>
+</navbar>

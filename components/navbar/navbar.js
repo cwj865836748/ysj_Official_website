@@ -35,6 +35,18 @@ Component({
     backgroundColor: {
       type: String,
       value: '#fff'
+    },
+    tabbar: {
+      type: Number,
+      value: 0
+    },
+    isTabbar: {
+      type:Boolean,
+      value:false
+    },
+    height: {
+      type:String,
+      value:'auto'
     }
   },
   options: {
@@ -47,16 +59,44 @@ Component({
   data: {
     navHeight: null,
     statusBarHeight: null,
+    isPhonex:false,
+    tabbarList: [{
+        index: 0,
+        name: '盈家',
+        normal: '/image/tabbar_icon_homeun@2x.png',
+        active: '/image/tabbar_icon_home@2x.png'
+      },
+      {
+        index: 1,
+        name: '解决方案',
+        normal: '/image/tabbar_icon_solveun@2x.png',
+        active: '/image/tabbar_icon_solve@2x.png'
+      },
+      {
+        index: 2,
+        name: '工程案例',
+        normal: '/image/tabbar_icon_projectun@2x.png',
+        active: '/image/tabbar_icon_project@2x.png'
+      },
+      {
+        index: 3,
+        name: '我的',
+        normal: '/image/tabbar_icon_mineun@2x.png',
+        active: '/image/tabbar_icon_mine@2x.png'
+      }
+    ]
   },
 
   attached() {
     const {
       navHeight,
-      statusBarHeight
+      statusBarHeight,
+      model
     } = App.globalData.navBar
     this.setData({
       navHeight,
-      statusBarHeight
+      statusBarHeight,
+      isPhoneX:model.search('iPhone X') != -1
     })
   },
   /**
@@ -71,24 +111,25 @@ Component({
         url: '/pages/index/index',
       })
     },
-    scroll(e) {
-      const {
-        scrollTop
-      } = e.detail
-      if (scrollTop > 50 && this.data.headColor != '#fff') {
-        this.setData({
-          headColor: '#fff',
-          titleColor: '#333333'
-        })
-      } else if (scrollTop < 50 && this.data.headColor != 'transparent')
-        this.setData({
-          headColor: 'transparent',
-          titleColor: '#fff'
-        })
-    },
-    scrolltolower(e) {
-      this.triggerEvent('onReachBottom')
+    tabbarChange(e) {
+      let url;
+      switch (e.detail) {
+        case 0:
+          url = "/pages/index/index"
+          break;
+        case 1:
+          url = "/pages/solution/solution"
+          break;
+        case 2:
+          url = "/pages/engineeringCase/engineeringCase"
+          break;
+        case 3:
+          url = "/pages/mine/mine"
+          break;
+      }
+      wx.redirectTo({
+        url,
+      })
     }
-  },
-
+  }
 })

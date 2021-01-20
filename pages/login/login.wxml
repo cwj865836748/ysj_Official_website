@@ -1,0 +1,18 @@
+<!--pages/login/login.wxml-->
+<navbar back="{{false}}" home="{{true}}" title="登录" navbarType="2" headColor="transparent">
+  <view class="loginBg">
+    <image src="/image/login_bg@2x.png"></image>
+    <view class="loginName">企业登录</view>
+  </view>
+  <view class="loginForm">
+     <view class="formInput flex-y-center">
+        <text>账号</text>
+        <input class="weui-input" placeholder="输入用户名" bindinput="inputDone" data-key="username"/>
+     </view>
+     <view class="formInput flex-y-center">
+        <text>密码</text>
+        <input class="weui-input" password type="text" placeholder="输入密码" bindinput="inputDone" data-key="password"/>
+     </view>
+     <view class="lognBtn flex-xy-center" bindtap="login">登录</view>
+  </view>
+</navbar>

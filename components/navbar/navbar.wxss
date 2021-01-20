@@ -3,7 +3,7 @@
   width: 100%;
   position: relative;
   z-index: 2;
-  transition: all 1s;
+  transition: all 0.1s;
 }
 .navbarFixed {
   width: 100%;
@@ -28,4 +28,27 @@
 }
 .slotContent {
   overflow: auto;
+}
+.slotContent2 {
+  min-height:100%;
+  /* height: 100%; */
+}
+.slotContentPadding {
+  padding-bottom: 50px ;
+}
+.slotContentIphoneXPadding {
+  padding-bottom: 84px ;
+}
+.tabbarTitle {
+  font-size: 20rpx;
+  color: #a6abb5;
+}
+.article {
+  font-size: 22rpx;
+  color: #000b1d;
+  font-weight: bold;
+}
+.tabbarTitle>image {
+  width: 10rpx;
+  height: 22rpx;
 }

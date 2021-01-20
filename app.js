@@ -1,6 +1,7 @@
 App({
   globalData: {
-    qqKey: 'ZBRBZ-E4WC2-HA3UF-CMQPB-QKR6E-5OFVJ'
+    qqKey: 'ZBRBZ-E4WC2-HA3UF-CMQPB-QKR6E-5OFVJ',
+    news:null
   },
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
@@ -28,7 +29,7 @@ App({
   },
   getNavBar(){
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();//获取胶囊按钮信息
-    const {statusBarHeight,system} = wx.getSystemInfoSync() //状态栏高度
+    const {statusBarHeight,system,windowWidth,windowHeight,model} = wx.getSystemInfoSync() //状态栏高度
     let navHeight=0
     //机型适配 如果获取不到胶囊按钮信息手动赋值
     if(menuButtonObject){
@@ -39,7 +40,8 @@ App({
     }
     this.globalData.navBar= {
       navHeight,
-      statusBarHeight
+      statusBarHeight,
+      windowWidth,windowHeight,model
     }
   },
   /**

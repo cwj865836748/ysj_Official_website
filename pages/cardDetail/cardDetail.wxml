@@ -1,0 +1,25 @@
+<!--pages/cardDetail/cardDetail.wxml-->
+<navbar title="名片详情">
+  <view class="card">
+    <view class="cardDetail">
+      <image
+        src='{{personData.cardPicture}}'>
+      </image>
+      <view class="cardDesc">
+        <view class="cardName">{{personData.name}}</view>
+        <view>{{personData.position}}</view>
+        <view class="cardPhoneCode flex-x-between flex-y-center">
+          <view class="phone">
+            <view>电话</view>
+            <view class="phoneDetail" bindtap="toPhone">{{personData.phone}}</view>
+          </view>
+          <view class="code">
+            <image src="{{personData.wechatQrCode}}"/>
+          </view>
+        </view>
+      </view>
+    </view>
+    <button class="saveBtn flex-xy-center" bindtap="saveCavans">保存并分享</button>
+  </view>
+  <canvas canvas-id="myCanvas" style="width:345px;height:434px;position:fixed;top:9999px;"></canvas>
+</navbar>

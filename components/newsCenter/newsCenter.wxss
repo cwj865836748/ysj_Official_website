@@ -1,0 +1,32 @@
+
+.newsList {
+  padding: 36rpx 0rpx;
+}
+.newsOne {
+  background: #ffffff;
+  border-radius: 10rpx;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0,0,0,0.10); 
+  font-size: 30rpx;
+  font-weight: bold;
+  color: var(--colorOne);
+  margin-bottom: 30rpx;
+  overflow: hidden;
+}
+.newsList>.newsOne:last-child {
+  margin-bottom: 0;
+}
+.newsDate {
+  font-size: 20rpx;
+  color: #999999;
+  margin-top: 10rpx;
+  letter-spacing: 1rpx;
+  font-weight: normal;
+}
+
+.newsOne image {
+  height: 298rpx !important;
+  vertical-align: bottom;
+}
+.newsContent {
+  padding:14rpx 36rpx 20rpx 20rpx;
+}

@@ -1,0 +1,16 @@
+<!--pages/qrCode/qrCode.wxml-->
+<navbar title="联系" backgroundColor="rgba(0,0,0,.6)">
+  <view class="qrCode">
+    <view class="qrCodeLogo flex-x-center">
+      <image src="/image/logo@2x.png"></image>
+    </view>
+    <view class="companyName">盈盛捷电力科技有限公司</view>
+    <view class="qrCodePic flex-x-center">
+       <view>
+         <image src="{{company.infoPublicQR}}"></image>
+       </view>
+    </view>
+    <view class="savePic flex-xy-center" bindtap="saveCavans">保存图片</view>
+  </view>
+  <canvas canvas-id="myCanvas" style="width:321px;height:347px;position:fixed;top:9999px;"></canvas>
+</navbar>

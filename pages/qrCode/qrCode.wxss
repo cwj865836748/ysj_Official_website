@@ -1,0 +1,46 @@
+/* pages/qrCode/qrCode.wxss */
+.qrCode {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 642rpx;
+  background: #ffffff;
+  border-radius: 8rpx;
+  padding-top: 64rpx;
+  color: var(--colorOne);
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.qrCodeLogo>image {
+  width: 168rpx;
+  height: 70rpx;
+}
+
+.companyName {
+  margin: 18rpx 0 46rpx;
+  text-align: center;
+}
+
+.qrCodePic {
+  margin-bottom: 72rpx;
+}
+
+.qrCodePic>view {
+  width: 378rpx;
+  height: 376rpx;
+}
+.qrCodePic>view>image {
+  width: 100%;
+  height: 100%;
+}
+
+.savePic {
+  height: 100rpx;
+  background: #0077cb;
+  border-radius: 0rpx 0rpx 8rpx 8rpx;
+  font-size: 34rpx;
+  color: #ffffff;
+  font-weight: bold;
+}
