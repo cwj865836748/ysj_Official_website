@@ -136,7 +136,7 @@
           <view class="{{qualificationActive==1?'qualificationActive':''}}" bindtap="qualificationTab" data-index="1">
             公司资质</view>
           <view class="{{qualificationActive==2?'qualificationActive':''}}" bindtap="qualificationTab" data-index="2">
-            认证证书</view>
+            知识产权</view>
           <view class="{{qualificationActive==3?'qualificationActive':''}}" bindtap="qualificationTab" data-index="3">
             检验报告</view>
         </view>
@@ -161,8 +161,8 @@
       <view class="detailContent experts flex-col">
         <view class="allHead flex-x-between flex-y-center">
           <view class="title">
-            <view>EXPERTS LIST</view>
-            <text>专家列表</text>
+            <view>INTRODUCTION OF EXPERTS</view>
+            <text>专家介绍</text>
           </view>
         </view>
         <view class="scrollView">
